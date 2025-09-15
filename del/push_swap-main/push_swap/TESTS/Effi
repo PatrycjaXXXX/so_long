@@ -1,0 +1,38 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Effi                                               :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/08/07 08:14:12 by psmolich          #+#    #+#              #
+#    Updated: 2025/08/10 07:24:14 by psmolich         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+N ?= 5
+TESTS ?= 10
+
+GREEN = \033[0;32m
+RED = \033[0;31m
+YELLOW = \033[1;33m
+BLUE = \033[0;34m
+RESET = \033[0m
+
+EFFI:
+	@echo "$(YELLOW)   Testing push_swap efficiency with N=$(N)...$(RESET)"
+	@> instr.txt
+	@i=0; \
+	while [ $$i -lt $(TESTS) ]; do \
+	ARG=$$(shuf -i 0-1000 -n $(N) | xargs); \
+	COUNT=$$(./../push_swap $$ARG | wc -l); \
+	echo $$COUNT >> instr.txt; \
+	i=$$((i+1)); \
+	done
+	@MIN=$$(sort -n instr.txt | head -1); \
+	MAX=$$(sort -n instr.txt | tail -1); \
+	AVG=$$(awk '{ total += $$1; count++ } END { if (count > 0) printf("%.2f", total/count); }' instr.txt); \
+	echo "$(GREEN)   Average : $$AVG$(RESET)"; \
+	echo "$(BLUE)   Minimum : $$MIN$(RESET)"; \
+	echo "$(RED)   Maximum : $$MAX$(RESET)";
+	@rm -f instr.txt
