@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 20:10:01 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/14 05:26:42 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/16 15:37:16 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,8 @@
 int	main(int ac, char **av)
 {
 	if (ac != 2)
+		return (ft_error(0), FAIL);
+	if (check_map(av[1]) == FAIL)
 		return (FAIL);
+	return(ft_printf("end\n"), 0);
 }
