@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 05:26:09 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/16 18:58:36 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/17 13:47:53 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ void	ft_error(int code)
 {
 	char	*err_msg[17];
 
-	if (code == -1)
-	{
-		ft_printf("Error\n%s\n", strerror(errno));
-		return ;
-	}
 	err_msg[0] = "Wrong number of arguments";
 	err_msg[1] = "Map error: invalid file extension (must be .ber)";
 	err_msg[2] = "Map error: file not found or cannot be opened";
@@ -41,5 +36,8 @@ void	ft_error(int code)
 	err_msg[14] = "MLX error: initialization failed";
 	err_msg[15] = "MLX error: failed to load image/texture";
 	err_msg[16] = "MLX error: window creation failed";
-	ft_printf("Error\n%s\n", err_msg[code]);
+	if (code == -1)
+		ft_printf("Error\n%s\n", strerror(errno));
+	else
+		ft_printf("Error\n%s\n", err_msg[code]);
 }
