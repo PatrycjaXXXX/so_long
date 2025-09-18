@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 16:46:40 by psmolich          #+#    #+#             */
-/*   Updated: 2025/08/27 06:41:14 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 06:02:42 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int		ft_strcmp(char *s1, char *s2);
 int		ft_isspace(int c);
 int		ft_isallspaces(const char *str);
 int		ft_isalldigits(const char *str);
-void	ft_free_arr(char **arr);
+void	ft_free_tab(char **arr);
 int		ft_bitcount(int nbr);
 int		ft_strstr_count(const char *str, const char *pattern);
 int		ft_strdel(char **str, char *pattern);

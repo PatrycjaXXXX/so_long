@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 20:08:38 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/17 20:02:29 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 07:34:26 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 
 # define MAP_CHARS "01CEP"
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
 typedef struct s_map_count
 {
 	int	collectible_parse;
@@ -28,14 +34,17 @@ typedef struct s_map_count
 	int	player_flood;
 }	t_map_count;
 
-typedef struct s_point
+typedef struct s_map
 {
-	int	x;
-	int	y;
-}	t_point;
+	char		*map_path;
+	char		**map;
+	t_point		size;
+	t_map_count	*map_count;
+}	t_map;
+
 
 char	**create_map(char *map_path);
-int		check_map(char **map, t_point size);
-int		map_parse(char	**map, t_map_count *map_count, t_point size);
+int		check_map(t_map *map);
+int		map_parse(char **map, t_point size, t_map_count *map_count);
 void	ft_error(int code);
 #endif

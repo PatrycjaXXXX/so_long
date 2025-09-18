@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 13:54:08 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/15 14:41:17 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 06:04:23 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int count_word_len(char *str)
 	return (i);
 }
 
-void	ft_free_arr(char **arr)
+void	ft_free_tab(char **arr)
 {
 	int	i;
 
@@ -77,7 +77,7 @@ char **ft_split(char *str)
 		if (!splited[i])
 		{
 			splited[i] = NULL;
-			ft_free_arr(splited);
+			ft_free_tab(splited);
 			return (NULL);
 		}
 		k = 0;
@@ -105,7 +105,7 @@ int main()
 	i = 0;
 	while (splited[i])
 		printf("%s\n", splited[i++]);
-	ft_free_arr(splited);
+	ft_free_tab(splited);
 	return 0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 19:18:39 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/17 19:19:47 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 07:31:44 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	print_parse_errors(t_map_count map_count)
 		ft_error(11);
 }
 
-int	map_parse(char	**map, t_map_count *map_count, t_point size)
+int	map_parse(char **map, t_point size, t_map_count *map_count)
 {
 	int	y;
 	int	x;

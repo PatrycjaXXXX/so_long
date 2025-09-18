@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 20:10:01 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/17 20:10:15 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 06:56:40 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,22 @@ static t_point	get_size(char **map)
 
 int	main(int ac, char **av)
 {
-	char	**map;
-	char	*map_path;
-	t_point	size;
+	t_map	map;
 
 	if (ac != 2)
 		return (ft_error(0), FAIL);
-	map_path = av[1];
-	if (check_format(map_path) == FAIL)
+	if (check_format(av[1]) == FAIL)
 		return (FAIL);
-	map = create_map(map_path);
-	if (!map)
+	map.map_path = av[1];
+	map.map = create_map(map.map_path);
+	if (!map.map)
 		return (ft_error(13), FAIL);
-	size = get_size(map);
-	if (check_map(map, size) == FAIL)
+	map.size = get_size(map.map);
+	map.map_count = (t_map_count *)ft_calloc(1, sizeof(t_map_count));
+	if (!map.map_count)
+		return (ft_free_tab(map.map), ft_error(13), FAIL);
+	if (check_map(&map) == FAIL)
 		return (FAIL);
-	// ft_free_arr(map);
+
 	return (0);
 }

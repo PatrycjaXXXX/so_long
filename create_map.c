@@ -6,13 +6,12 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:01:53 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/17 20:02:49 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 07:19:56 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "libft/libft.h"
-#include "minilibx-linux/mlx.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -82,8 +81,8 @@ char	**create_map(char *map_path)
 	while (i <= rows)
 		map[i++] = get_next_line(fd);
 	if (trim_new_line(map) == FAIL)
-		return (ft_free_arr(map), ft_error(13), NULL);
+		return (ft_free_tab(map), ft_error(13), NULL);
 	if (close(fd) == FAIL)
-		return (ft_free_arr(map), ft_error(-1), NULL);
+		return (ft_free_tab(map), ft_error(-1), NULL);
 	return (map);
 }

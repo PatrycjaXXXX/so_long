@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 11:48:28 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/15 13:15:47 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 06:04:30 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "flood_fill.h"
 #include <string.h>
 
-void	ft_free_arr(char **arr)
+void	ft_free_tab(char **arr)
 {
 	int	i;
 
@@ -76,6 +76,6 @@ int main(void)
 	flood_fill(area, size, begin);
 	printf("\n");
 	ft_print_tab(area);
-	ft_free_arr(area);
+	ft_free_tab(area);
 	return (0);
 }

@@ -108,15 +108,15 @@ int	record_arg(int ac, char **av, t_list **stack_a)
 	arg = get_arg(ac, av);
 	i = 0;
 	if (check_arg(arg, i) == FAIL)
-		return (ft_free_arr(arg), FAIL);
+		return (ft_free_tab(arg), FAIL);
 	while (arg[i])
 	{
 		value = 0;
 		if (check_value(arg[i], &value) == FAIL)
-			return (ft_free_arr(arg), FAIL);
+			return (ft_free_tab(arg), FAIL);
 		ft_lstadd_back(stack_a, ft_lstnew(value, i));
 		i++;
 	}
-	ft_free_arr(arg);
+	ft_free_tab(arg);
 	return (SUCCESS);
 }
