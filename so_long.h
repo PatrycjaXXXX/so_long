@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 20:08:38 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/18 07:34:26 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 08:46:13 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ typedef struct s_map
 	t_map_count	*map_count;
 }	t_map;
 
+void	ft_error(int code);
 
 char	**create_map(char *map_path);
 int		check_map(t_map *map);
 int		map_parse(char **map, t_point size, t_map_count *map_count);
-void	ft_error(int code);
+int		map_flood(t_map *map);
+
 #endif

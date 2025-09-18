@@ -6,12 +6,12 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 20:01:53 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/18 07:19:56 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 08:30:42 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include "libft/libft.h"
+#include "../so_long.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>

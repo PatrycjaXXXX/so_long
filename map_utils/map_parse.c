@@ -6,12 +6,12 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 19:18:39 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/18 07:31:44 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 08:32:43 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include "libft/libft.h"
+#include "../so_long.h"
+#include "../libft/libft.h"
 
 static void	print_parse_errors(t_map_count map_count)
 {
@@ -36,7 +36,7 @@ int	map_parse(char **map, t_point size, t_map_count *map_count)
 	while (map[++y])
 	{
 		x = -1;
-		if (ft_strlen(map[y]) != size.x)
+		if ((int)ft_strlen(map[y]) != size.x)
 			return (ft_error(4), FAIL);
 		while (map[y][++x])
 		{

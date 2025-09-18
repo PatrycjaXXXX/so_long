@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 20:10:01 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/18 06:56:40 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/18 08:38:04 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 	map.map_path = av[1];
 	map.map = create_map(map.map_path);
 	if (!map.map)
-		return (ft_error(13), FAIL);
+		return (FAIL);
 	map.size = get_size(map.map);
 	map.map_count = (t_map_count *)ft_calloc(1, sizeof(t_map_count));
 	if (!map.map_count)
