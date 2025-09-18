@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/13 20:08:38 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/18 08:46:13 by psmolich         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   so_long.h										  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: psmolich <psmolich@student.42berlin.de>	+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2025/09/13 20:08:38 by psmolich		  #+#	#+#			 */
+/*   Updated: 2025/09/18 18:05:21 by psmolich		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
@@ -17,6 +17,7 @@
 # define SUCCESS 1
 
 # define MAP_CHARS "01CEP"
+# define TILE 64
 
 typedef struct s_point
 {
@@ -41,6 +42,13 @@ typedef struct s_map
 	t_point		size;
 	t_map_count	*map_count;
 }	t_map;
+
+typedef struct s_game
+{
+	t_map	map;
+	void	*mlx;
+	void	*win;
+}	t_game;
 
 void	ft_error(int code);
 

@@ -6,7 +6,7 @@
 #    By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/16 12:46:53 by psmolich          #+#    #+#              #
-#    Updated: 2025/09/18 08:34:39 by psmolich         ###   ########.fr        #
+#    Updated: 2025/09/18 17:23:15 by psmolich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@ $(MLX_DIR):
 
 clean:
 	make clean -C libft/
-	make clean -C minilibx-linux/
 
 fclean: clean
 	rm -f $(NAME)
