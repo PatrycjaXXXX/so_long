@@ -20,7 +20,7 @@
 # define TILE 64
 
 # define TREES "./textures/trees.xpm"
-# define EMPTY "./textures/empty.xpm"
+# define EMPTY "./texturses/empty.xpm"
 # define WITCH_L "./textures/witch-left.xpm"
 # define WITCH_R "./textures/witch-right.xpm"
 # define CAT "./textures/cat.xpm"
@@ -71,11 +71,13 @@ typedef struct s_game
 }	t_game;
 
 void	ft_error(int code);
+void	free_game(t_game *game);
 
 int		get_map(t_game *game, char *file_path);
 char	**create_map(char *map_path);
 int		check_map(t_map *map);
 int		map_parse(char **map, t_point size, t_map_count *map_count);
 int		map_flood(t_map *map);
+int		generate_map(t_game *game);
 
 #endif
