@@ -6,7 +6,7 @@
 #    By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/16 12:46:53 by psmolich          #+#    #+#              #
-#    Updated: 2025/09/18 17:23:15 by psmolich         ###   ########.fr        #
+#    Updated: 2025/09/20 13:39:19 by psmolich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,14 @@ NAME := so_long
 
 LIB =  $(LIBFT) $(MLX)
 LIBFT := libft/libft.a
-MLX := minilibx-linux/libmlx.a
+MLX = $(MLX_DIR)/libmlx.a
 MLX_DIR := minilibx-linux
 MLX_REPO := https://github.com/42Paris/minilibx-linux.git
 
 SRCS = so_long.c error.c $(MAP_UTILS)
 
-MAP_UTILS := map_utils/check_map.c \
+MAP_UTILS := map_utils/get_map.c \
+				map_utils/check_map.c \
 				map_utils/map_flood.c \
 				map_utils/create_map.c \
 				map_utils/map_parse.c
@@ -54,3 +55,7 @@ fclean: clean
 	rm -rf $(MLX_DIR)
 
 re: fclean all
+
+res:
+	rm -f $(NAME)
+	make 

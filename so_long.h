@@ -19,6 +19,14 @@
 # define MAP_CHARS "01CEP"
 # define TILE 64
 
+# define TREES "textures/trees.xpm"
+# define EMPTY "textures/empty.xpm"
+# define WITCH_L "textures/witch-left.xpm"
+# define WITCH_R "textures/witch-right.xpm"
+# define CAT "textures/cat.xpm"
+# define DOOR_C "textures/closed-doors.xpm"
+# define DOOR_O "textures/open-doors.xpm"
+
 typedef struct s_point
 {
 	int	x;
@@ -43,15 +51,28 @@ typedef struct s_map
 	t_map_count	*map_count;
 }	t_map;
 
+typedef struct s_tile
+{
+	void	*trees;
+	void	*empty;
+	void	*witch_l;
+	void	*witch_r;
+	void	*cat;
+	void	*door_c;
+	void	*door_o;
+}	t_tile;
+
 typedef struct s_game
 {
 	t_map	map;
 	void	*mlx;
 	void	*win;
+	t_tile	tile;
 }	t_game;
 
 void	ft_error(int code);
 
+int		get_map(t_game *game, char *file_path);
 char	**create_map(char *map_path);
 int		check_map(t_map *map);
 int		map_parse(char **map, t_point size, t_map_count *map_count);
