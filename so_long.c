@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/13 20:10:01 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/20 16:54:26 by psmolich         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   so_long.c										  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: psmolich <psmolich@student.42berlin.de>	+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2025/09/13 20:10:01 by psmolich		  #+#	#+#			 */
+/*   Updated: 2025/09/20 17:58:10 by psmolich		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "so_long.h"
@@ -20,11 +20,11 @@ static void	free_game(t_game *game)
 	ft_free_tab(game->map.map);
 }
 
-static int	get_img(t_game *game)
+static int	load_img(t_game *game)
 {
 	int	tmp;
 
-	tmp = 0;
+	tmp = TILE;
 	game->tile.trees = mlx_xpm_file_to_image(game->mlx, TREES, &tmp, &tmp);
 	game->tile.empty = mlx_xpm_file_to_image(game->mlx, EMPTY, &tmp, &tmp);
 	game->tile.witch_l = mlx_xpm_file_to_image(game->mlx, WITCH_L, &tmp, &tmp);
@@ -42,21 +42,29 @@ static int	get_img(t_game *game)
 static int	generate_map(t_game *game)
 {
 	t_point	parse;
+	void	*tile;
 
-	parse = (t_point){0, 0};
-	if (get_img(game) == FAIL)
+	if (load_img(game) == FAIL)
 		return (FAIL);
-	while (parse.y < game->map.size.y)
+	parse.y = -1;
+	while (++parse.y < game->map.size.y && game->map.map[parse.y])
 	{
-		parse.x = 0;
-		while (parse.x < game->map.size.x)
+		parse.x = -1;
+		while (++parse.x < game->map.size.x && game->map.map[parse.y][parse.x])
 		{
-			if (game->map.map[parse.y][parse.x] == '1')
-				mlx_put_image_to_window(game->mlx, game->win, game->tile.trees,
-					parse.x * TILE, parse.y * TILE);
-			parse.x++;
+			if (game->map.map[parse.y][parse.x] == '0')
+				tile = game->tile.empty;
+			else if (game->map.map[parse.y][parse.x] == '1')
+				tile = game->tile.trees;
+			else if (game->map.map[parse.y][parse.x] == 'C')
+				tile = game->tile.cat;
+			else if (game->map.map[parse.y][parse.x] == 'E')
+				tile = game->tile.door_c;
+			else
+				tile = game->tile.witch_r;
+			mlx_put_image_to_window(game->mlx, game->win,
+				tile, parse.x * TILE, parse.y * TILE);
 		}
-		parse.y++;
 	}
 	return (SUCCESS);
 }

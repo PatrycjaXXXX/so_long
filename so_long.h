@@ -19,13 +19,13 @@
 # define MAP_CHARS "01CEP"
 # define TILE 64
 
-# define TREES "textures/trees.xpm"
-# define EMPTY "textures/empty.xpm"
-# define WITCH_L "textures/witch-left.xpm"
-# define WITCH_R "textures/witch-right.xpm"
-# define CAT "textures/cat.xpm"
-# define DOOR_C "textures/closed-doors.xpm"
-# define DOOR_O "textures/open-doors.xpm"
+# define TREES "./textures/trees.xpm"
+# define EMPTY "./textures/empty.xpm"
+# define WITCH_L "./textures/witch-left.xpm"
+# define WITCH_R "./textures/witch-right.xpm"
+# define CAT "./textures/cat.xpm"
+# define DOOR_C "./textures/closed-doors.xpm"
+# define DOOR_O "./textures/open-doors.xpm"
 
 typedef struct s_point
 {
