@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 08:04:42 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/21 15:30:23 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/21 18:52:47 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@ static void	flood_check(char	**map, t_point size, t_point position,
 	if (map[position.y][position.x] == '1'
 		|| map[position.y][position.x] == 'V')
 		return ;
+	if (map[position.y][position.x] == 'E')
+	{
+		map[position.y][position.x] = '1';
+		map_count->exit_flood++;
+		return ;
+	}
 	map_count->collectible_flood += (map[position.y][position.x] == 'C');
-	map_count->exit_flood += (map[position.y][position.x] == 'E');
 	map_count->player_flood += (map[position.y][position.x] == 'P');
 	map[position.y][position.x] = 'V';
 	flood_check(map, size, (t_point){position.x - 1, position.y}, map_count);

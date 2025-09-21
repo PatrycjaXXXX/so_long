@@ -101,5 +101,6 @@ int		map_flood(t_map *map);
 int		generate_map(t_game *game);
 
 int		key_press(int keycode, t_game *game);
+void	print_moves(t_game *game);
 
 #endif

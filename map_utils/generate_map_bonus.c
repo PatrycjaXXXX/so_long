@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_map.c                                     :+:      :+:    :+:   */
+/*   generate_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 19:38:34 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/21 18:02:42 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/21 18:41:52 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ int	generate_map(t_game *game)
 		parse.y++;
 	}
 	game->player_direction = game->tile.witch_r;
+	mlx_string_put(game->mlx, game->win, 8, 41, 0xFFFFFF, "Moves: 0");
 	return (SUCCESS);
 }
