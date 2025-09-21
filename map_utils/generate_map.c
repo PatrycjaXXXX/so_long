@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 19:38:34 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/21 13:30:30 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/21 16:32:31 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ int	generate_map(t_game *game)
 		}
 		parse.y++;
 	}
+	game->player_direction = game->tile.witch_r;
 	return (SUCCESS);
 }

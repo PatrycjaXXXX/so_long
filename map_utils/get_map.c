@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 13:37:14 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/21 15:54:58 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/21 16:32:20 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	get_map(t_game *game, char *file_path)
 	if (check_map(&game->map) == FAIL)
 		return (FAIL);
 	game->player = find_coordinates(game->map.map, 'P');
-	game->player_direction = game->tile.witch_r;
 	game->exit = find_coordinates(game->map.map, 'E');
 	game->to_collect = game->map.map_count->collectible_parse;
 	return (SUCCESS);
