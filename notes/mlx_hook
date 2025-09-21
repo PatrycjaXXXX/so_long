@@ -1,0 +1,20 @@
+mlx_hook(win, 2, KeyPressMask, key_press, &data);      // KeyPress
+mlx_hook(win, 3, KeyReleaseMask, key_release, &data);  // KeyRelease
+mlx_hook(win, 4, ButtonPressMask, mouse_press, &data); // Klik myszy
+mlx_hook(win, 5, ButtonReleaseMask, mouse_release, &data); 
+mlx_hook(win, 6, PointerMotionMask, mouse_move, &data);
+mlx_hook(win, 17, 0, close_win, NULL);                 // Zamknięcie okna
+
+
+// Klawiatura
+mlx_hook(win, 2, KeyPressMask, key_press, &data);     
+mlx_hook(win, 3, KeyReleaseMask, key_release, &data);
+
+// Mysz
+mlx_hook(win, 4, ButtonPressMask, mouse_press, &data);
+mlx_hook(win, 5, ButtonReleaseMask, mouse_release, &data);
+mlx_hook(win, 6, PointerMotionMask, mouse_move, &data);
+
+// Okno
+mlx_hook(win, 12, ExposureMask, redraw, &data);       
+mlx_hook(win, 17, 0, close_win, NULL); // tu maska niepotrzebna

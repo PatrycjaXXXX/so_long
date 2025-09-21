@@ -20,12 +20,22 @@
 # define TILE 64
 
 # define TREES "./textures/trees.xpm"
-# define EMPTY "./texturses/empty.xpm"
+# define EMPTY "./textures/empty.xpm"
 # define WITCH_L "./textures/witch-left.xpm"
 # define WITCH_R "./textures/witch-right.xpm"
 # define CAT "./textures/cat.xpm"
 # define DOOR_C "./textures/closed-doors.xpm"
 # define DOOR_O "./textures/open-doors.xpm"
+
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define LEFT 65361
+# define UP 65362
+# define RIGHT 65363
+# define DOWN 65364
 
 typedef struct s_point
 {
@@ -68,10 +78,20 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	t_tile	tile;
+	t_point	player;
+	void	*player_direction;
+	t_point	exit;
+	int		to_collect;
+	int		collected;
+	int		moves;
 }	t_game;
 
 void	ft_error(int code);
 void	free_game(t_game *game);
+int		close_game(t_game *game);
+
+t_point	find_coordinates(char **map, char type);
+char	find_type(t_game game, int y, int x);
 
 int		get_map(t_game *game, char *file_path);
 char	**create_map(char *map_path);
@@ -79,5 +99,7 @@ int		check_map(t_map *map);
 int		map_parse(char **map, t_point size, t_map_count *map_count);
 int		map_flood(t_map *map);
 int		generate_map(t_game *game);
+
+int		key_press(int keycode, t_game *game);
 
 #endif

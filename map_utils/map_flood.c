@@ -6,32 +6,12 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 08:04:42 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/18 08:30:49 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/21 15:30:23 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include "../libft/libft.h"
-
-static t_point	find_player(char **map)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == 'P')
-				return ((t_point){x, y});
-			x++;
-		}
-		y++;
-	}
-	return ((t_point){-1, -1});
-}
 
 static void	flood_check(char	**map, t_point size, t_point position,
 	t_map_count *map_count)
@@ -39,7 +19,8 @@ static void	flood_check(char	**map, t_point size, t_point position,
 	if (position.y < 0 || position.x < 0
 		|| position.y >= size.y || position.x >= size.x)
 		return ;
-	if (map[position.y][position.x] == '1' || map[position.y][position.x] == 'V')
+	if (map[position.y][position.x] == '1'
+		|| map[position.y][position.x] == 'V')
 		return ;
 	map_count->collectible_flood += (map[position.y][position.x] == 'C');
 	map_count->exit_flood += (map[position.y][position.x] == 'E');
@@ -56,7 +37,7 @@ int	map_flood(t_map *map)
 	t_point	player;
 	char	**map_copy;
 
-	player = find_player(map->map);
+	player = find_coordinates(map->map, 'P');
 	if (player.x == -1 && player.y == -1)
 		return (ft_error(7), FAIL);
 	map_copy = create_map(map->map_path);

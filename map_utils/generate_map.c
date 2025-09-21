@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 19:38:34 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/20 19:41:08 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/21 13:30:30 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,22 @@ static int	load_img(t_game *game)
 	return (SUCCESS);
 }
 
+static void	*return_tile_type(char map_point, t_game *game)
+{
+	if (map_point == '0')
+		return (game->tile.empty);
+	else if (map_point == '1')
+		return (game->tile.trees);
+	else if (map_point == 'C')
+		return (game->tile.cat);
+	else if (map_point == 'E')
+		return (game->tile.door_c);
+	else if (map_point == 'P')
+		return (game->tile.witch_r);
+	else
+		return (ft_error(6), NULL);
+}
+
 int	generate_map(t_game *game)
 {
 	t_point	parse;
@@ -50,25 +66,20 @@ int	generate_map(t_game *game)
 
 	if (load_img(game) == FAIL)
 		return (FAIL);
-	parse.y = -1;
-	while (++parse.y < game->map.size.y && game->map.map[parse.y])
+	parse.y = 0;
+	while (parse.y < game->map.size.y && game->map.map[parse.y])
 	{
-		parse.x = -1;
-		while (++parse.x < game->map.size.x && game->map.map[parse.y][parse.x])
+		parse.x = 0;
+		while (parse.x < game->map.size.x && game->map.map[parse.y][parse.x])
 		{
-			if (game->map.map[parse.y][parse.x] == '0')
-				tile = game->tile.empty;
-			else if (game->map.map[parse.y][parse.x] == '1')
-				tile = game->tile.trees;
-			else if (game->map.map[parse.y][parse.x] == 'C')
-				tile = game->tile.cat;
-			else if (game->map.map[parse.y][parse.x] == 'E')
-				tile = game->tile.door_c;
-			else
-				tile = game->tile.witch_r;
+			tile = return_tile_type(game->map.map[parse.y][parse.x], game);
+			if (!tile)
+				return (FAIL);
 			mlx_put_image_to_window(game->mlx, game->win,
 				tile, parse.x * TILE, parse.y * TILE);
+			parse.x++;
 		}
+		parse.y++;
 	}
 	return (SUCCESS);
 }

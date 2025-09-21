@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 19:34:21 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/20 19:37:26 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/21 14:57:20 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,11 @@ void	free_game(t_game *game)
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
+}
+
+int	close_game(t_game *game)
+{
+	free_game(game);
+	exit(0);
+	return (0);
 }

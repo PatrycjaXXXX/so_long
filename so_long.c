@@ -34,6 +34,8 @@ int	main(int ac, char **av)
 		return (ft_error(16), FAIL);
 	if (generate_map(&game) == FAIL)
 		return (free_game(&game), FAIL);
+	mlx_hook(game.win, 2, (1L << 0), key_press, &game);
+	mlx_hook(game.win, 17, 0, close_game, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

@@ -1,0 +1,46 @@
+x_event = numer zdarzenia
+x_mask = flaga, która pozwala je „włączyć”
+
+Jeśli zdarzenie dotyczy klawiatury/myszy/ruchu, zawsze podajesz maskę (KeyPressMask, ButtonPressMask, PointerMotionMask, …).
+Jeśli zdarzenie dotyczy struktury okna (zamknięcie, expose, destroy), to maska może być 0.
+Jeśli zdarzenie w X11 nie ma swojej maski, to maska w mlx_hook i tak nic nie zmienia.
+
+Pełna lista x_event (X11 Event Numbers)
+
+Kod (x_event) Nazwa (X11)	Opis												Maski (jeśli istnieją)
+
+2	KeyPress			Wciśnięcie klawisza										KeyPressMask (1<<0)
+3	KeyRelease			Zwolnienie klawisza										KeyReleaseMask (1<<1)
+4	ButtonPress			Kliknięcie przycisku myszy								ButtonPressMask (1<<2)
+5	ButtonRelease		Zwolnienie przycisku myszy								ButtonReleaseMask (1<<3)
+6	MotionNotify		Ruch myszy												PointerMotionMask (1<<6)
+7	EnterNotify 		Kursor wchodzi do okna									EnterWindowMask (1<<4)
+8	LeaveNotify 		Kursor wychodzi z okna									LeaveWindowMask (1<<5)
+9	FocusIn				Okno dostaje fokus										FocusChangeMask
+10	FocusOut			Okno traci fokus										FocusChangeMask
+11	KeymapNotify		Zmiana mapy klawiatury									(brak maski)
+12	Expose				Okno wymaga odrysowania									ExposureMask (1<<15)
+13	GraphicsExpose		Serwer prosi o ponowne narysowanie grafiki				(brak maski)
+14	NoExpose			Brak potrzeby odrysowania grafiki						(brak maski)
+15	VisibilityNotify	Zmiana widoczności okna (np. zasłonięte)				VisibilityChangeMask
+16	CreateNotify		Utworzenie okna potomnego								SubstructureNotifyMask
+17	DestroyNotify		Zniszczenie okna										StructureNotifyMask lub SubstructureNotifyMask
+18	UnmapNotify			Okno zostało ukryte										StructureNotifyMask lub SubstructureNotifyMask
+19	MapNotify			Okno zostało pokazane									StructureNotifyMask lub SubstructureNotifyMask
+20	MapRequest			Prośba o pokazanie okna									SubstructureRedirectMask
+21	ReparentNotify		Okno zmieniło rodzica									StructureNotifyMask lub SubstructureNotifyMask
+22	ConfigureNotify		Zmiana geometrii okna (rozmiar, pozycja)				StructureNotifyMask lub SubstructureNotifyMask
+23	ConfigureRequest	Prośba o zmianę geometrii okna							SubstructureRedirectMask
+24	GravityNotify		Przesunięcie okna względem rodzica						StructureNotifyMask
+25	ResizeRequest		Prośba o zmianę rozmiaru okna							ResizeRedirectMask
+26	CirculateNotify		Zmiana kolejności okna (stacking order)					StructureNotifyMask lub SubstructureNotifyMask
+27	CirculateRequest	Prośba o zmianę kolejności okna							SubstructureRedirectMask
+28	PropertyNotify		Zmiana właściwości okna (np. nazwa)						PropertyChangeMask
+29	SelectionClear		Aplikacja traci kontrolę nad selekcją (clipboard)		(brak maski)
+30	SelectionRequest	Prośba o udostępnienie selekcji (clipboard)				(brak maski)
+31	SelectionNotify		Wynik operacji na selekcji (clipboard)					(brak maski)
+32	ColormapNotify		Zmiana mapy kolorów										ColormapChangeMask
+33	ClientMessage		Wiadomość od klienta (np. WM_DELETE_WINDOW)				(brak maski)
+34	MappingNotify		Zmiana mapy klawiatury/myszy							(brak maski)
+35	GenericEvent		Zdarzenie rozszerzone (np. XInput2)						(brak maski)
+36	LASTEvent			Symboliczna wartość, ostatnie możliwe zdarzenie	—

@@ -6,7 +6,7 @@
 /*   By: psmolich <psmolich@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 15:07:46 by psmolich          #+#    #+#             */
-/*   Updated: 2025/09/20 17:56:37 by psmolich         ###   ########.fr       */
+/*   Updated: 2025/09/21 15:15:29 by psmolich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,5 @@ int	check_map(t_map *map)
 		return (free(map->map_count), ft_free_tab(map->map), FAIL);
 	if (compare_results(*(map->map_count)) == FAIL)
 		return (free(map->map_count), ft_free_tab(map->map), FAIL);
-	else
-		ft_printf("playable\n");
 	return (SUCCESS);
 }
